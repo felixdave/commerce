@@ -11,7 +11,7 @@
                 <div class="row no-gutters">
                     {% if listing.image_url %}
                         <div class="col-md-4">
-                            <img src="{{ listing.image_url }}" class="card-img" alt="{{ listing.title }}">
+                            <img src="{{ listing.image_url }}" class="card-img" alt="{{ listing.title }}" loading="lazy">
                         </div>
                         <div class="col-md-8">
                     {% else %}
