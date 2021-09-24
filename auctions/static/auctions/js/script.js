@@ -1,1 +1,5 @@
-console.log("hello");
+console.log('hello');
+
+document.querySelector('h1').onclick = () => {
+	location.href = '/';
+};

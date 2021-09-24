@@ -2,37 +2,22 @@
 
 {% block body %}
 <h2>{{ title }}</h2>
-
-{% for listing in listings %}
-
-
-<div>
-    <a href="{% url 'listing' listing.id %}">``
-        <div>
-            {% if listing.image_url %}
-            <div>
-                <img src="{{ listing.image_url }}" alt="{{ listing.title }}" loading="lazy">
-            </div>
-            <div>
-                {% else %}
-                <div>
-                    {% endif %}
-                    <div>
-                        <h5>
-                            {{ listing.title }}
-                        </h5>
-                        <p><strong>Price:</strong> ${{ listing.price }}</p>
-                        {% if listing.category %}
-                        <p><strong>Category:</strong> {{ listing.category }}</p>
-                        {% endif %}
-                        <p>{{ listing.description }}</p>
-                        <p><small class="text-muted">Created {{ listing.creation_time }}</small></p>
-                    </div>
-                </div>
-            </div>
+<div class="grid">
+    {% for listing in listings %}
+    <a class="card" title="{{listing.title }}" href="{% url 'listing' listing.id %}">
+        {% if listing.image_url %}
+        <img src="{{ listing.image_url }}" alt="{{ listing.title }}" loading="lazy">
+        {% endif %}
+        <!-- <h5>{{ listing.title }}</h5> -->
+        <p><strong>Price:</strong> ${{ listing.price }}</p>
+        {% if listing.category %}
+        <p><strong>Category:</strong> {{ listing.category }}</p>
+        {% endif %}
+        <p>{{ listing.description }}</p>
+        <p><small class="text-muted">Posted {{ listing.creation_time|date:'m/d/y h:iA' }}</small></p>
     </a>
+    {% empty %}
+    No active listings.
+    {% endfor %}
 </div>
-{% empty %}
-No active listings.
-{% endfor %}
 {% endblock %}
