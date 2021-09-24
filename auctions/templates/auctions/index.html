@@ -1,38 +1,38 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>{{ title }}</h2>
+<h2>{{ title }}</h2>
 
-    {% for listing in listings %}
+{% for listing in listings %}
 
 
-        <div class="card mb-3">
-            <a href="{% url 'listing' listing.id %}">
-                <div class="row no-gutters">
-                    {% if listing.image_url %}
-                        <div class="col-md-4">
-                            <img src="{{ listing.image_url }}" class="card-img" alt="{{ listing.title }}" loading="lazy">
-                        </div>
-                        <div class="col-md-8">
-                    {% else %}
-                        <div class="col-md-12">
+<div>
+    <a href="{% url 'listing' listing.id %}">``
+        <div>
+            {% if listing.image_url %}
+            <div>
+                <img src="{{ listing.image_url }}" alt="{{ listing.title }}" loading="lazy">
+            </div>
+            <div>
+                {% else %}
+                <div>
                     {% endif %}
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    {{ listing.title }}
-                                </h5>
-                                <p class="card-text"><strong>Price:</strong> ${{ listing.price }}</p>
-                                {% if listing.category %}
-                                    <p class="card-text"><strong>Category:</strong> {{ listing.category }}</p>
-                                {% endif %}
-                                <p class="card-text">{{ listing.description }}</p>
-                                <p class="card-text"><small class="text-muted">Created {{ listing.creation_time }}</small></p>
-                            </div>
-                        </div>
+                    <div>
+                        <h5>
+                            {{ listing.title }}
+                        </h5>
+                        <p><strong>Price:</strong> ${{ listing.price }}</p>
+                        {% if listing.category %}
+                        <p><strong>Category:</strong> {{ listing.category }}</p>
+                        {% endif %}
+                        <p>{{ listing.description }}</p>
+                        <p><small class="text-muted">Created {{ listing.creation_time }}</small></p>
+                    </div>
                 </div>
-            </a>
-        </div>
-    {% empty %}
-        No active listings.
-    {% endfor %}
+            </div>
+    </a>
+</div>
+{% empty %}
+No active listings.
+{% endfor %}
 {% endblock %}

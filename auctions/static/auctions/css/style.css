@@ -28,14 +28,13 @@ ul {
 }
 a {
 	text-decoration: none;
-	color: white;
+	color: var(--drkGrey);
 }
 
 /* MAIN */
 main {
 	display: grid;
 	height: 100vh;
-	/* background-color: red; */
 	grid-template-columns: 280px 1fr;
 }
 
@@ -86,7 +85,6 @@ main #sidenav .nav {
 }
 main #sidenav .nav li {
 	/* background-color: yellow; */
-	padding: 10px 16px;
 	border-radius: 4px;
 }
 main #sidenav .nav li:hover {
@@ -94,13 +92,24 @@ main #sidenav .nav li:hover {
 	font-size: 16px;
 }
 main #sidenav .nav li a {
+	padding: 10px 16px;
+	display: block;
+}
+
+main #sidenav .nav li a,
+main #sidenav .log-info i {
 	color: white;
 }
 
 main #sidenav .log-info {
 	align-self: flex-end;
 }
-/* log info */
+/* END of SIDENAV */
+
+/* CONTENT - Dynamic */
+#content {
+	color: var(--drkGrey);
+}
 
 /* AT MEDIA  */
 @media only screen and (min-width: 960px) {

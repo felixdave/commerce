@@ -29,25 +29,24 @@
       <hr>
       <ul class="nav">
         <li>
-          <i class="bi bi-tags-fill"></i>
-          <a href="{% url 'index' %}">Active Listings</a>
+          <a href="{% url 'index' %}"><i class="bi bi-tags-fill"> </i>
+            Active Listings</a>
         </li>
         <li>
-          <i class="bi bi-stack"></i>
-          <a href="{% url 'categories' %}">Category</a>
+
+          <a href="{% url 'categories' %}"><i class="bi bi-stack"></i> Category</a>
         </li>
         {% if user.is_authenticated %}
         <li>
-          <i class="bi bi-bookmarks"></i> <a href="{% url 'watchlist' %}">
-            Watchlist
+          <a href="{% url 'watchlist' %}"><i class="bi bi-bookmarks"></i> Watchlist
             {% if request.user.watchlist.count > 0 %}
             <span class="badge badge-secondary">{{ request.user.watchlist.count }}</span>
             {% endif %}
           </a>
         </li>
         <li>
-          <i class="bi bi-tag"></i>
-          <a class="nav-link" href="{% url 'create' %}">Create Listing</a>
+
+          <a class="nav-link" href="{% url 'create' %}"><i class="bi bi-tag"></i> Create Listing</a>
         </li>
 
         {% else %}
