@@ -3,12 +3,12 @@
 	--drkGrey: #212529;
 	--wthNoSide: calc(1420px - 280px);
   --blue:#0d6efd;
+  --background:#dbdbdb;
 }
 * {
 	box-sizing: border-box;
 }
 body {
-	margin: 0 auto;
 	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
 		Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji',
 		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -42,25 +42,24 @@ p {
 
 /* MAIN */
 main {
-	display: grid;
-	height: 100vh;
-	grid-template-columns: 1fr 280px 1fr 1fr;
+	display: flex;
+  justify-content: center;
 }
 
 /* SIDENAV */
 main #sidenav {
-	grid-column: 2/3;
-	background-color: var(--drkGrey);
-	color: white;
-	padding: 16px;
+  /* flex for nav items */
 	display: flex;
 	flex-direction: column;
-	/* align-items: flex-end; */
+  flex-shrink: 0;
+  height:100vh;
+  width:230px;
+	background-color: var(--drkGrey);
+	padding: 16px;
 }
 /* title */
 main #sidenav .title {
 	display: flex;
-	/* justify-content: flex-start; */
 	align-items: flex-end;
 	height: 32px;
 	width: 100%;
@@ -70,11 +69,14 @@ main #sidenav .title i {
 	font-size: var(--h1icon);
 	height: var(--h1icon);
 	width: var(--h1icon);
+  color:var(--blue);
+  text-shadow: 0px 0px 5px var(--blue);
 }
 main #sidenav .title h1 {
 	font-size: 25px;
 	font-weight: normal;
-	margin: 0;
+	margin: 0;  
+  color:white;
 }
 /* hr */
 main #sidenav hr {
@@ -84,7 +86,7 @@ main #sidenav hr {
 	margin: 16px 0;
 }
 /* nav */
-main #sidenav .nav {
+main #sidenav ul {
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -92,20 +94,19 @@ main #sidenav .nav {
 	flex-grow: 1;
 	cursor: pointer;
 }
-main #sidenav .nav li {
-	/* background-color: yellow; */
+main #sidenav ul li {
 	border-radius: 4px;
 }
-main #sidenav .nav li:hover {
+main #sidenav ul li:hover {
 	background-color: var(--blue);
 	font-size: 16px;
 }
-main #sidenav .nav li a {
+main #sidenav ul li a {
 	padding: 10px 16px;
 	display: block;
 }
 
-main #sidenav .nav li a,
+main #sidenav ul li a,main #sidenav .log-info,
 main #sidenav .log-info i {
 	color: white;
 }
@@ -117,28 +118,29 @@ main #sidenav .log-info {
 
 /* CONTENT - Dynamic */
 #content {
-	grid-column: 3/4;
-	color: var(--drkGrey);
-	background-color: #dbdbdb;
-	max-width: var(--wthNoSide);
+  color: var(--drkGrey);
+	background-color:var(--background);
+  width: 100%;
+  max-width: var(--wthNoSide);
 }
 #content h2{
- color: white;
- text-align: center;
- text-shadow: 0px 0px 5px rgb(129, 129, 129);
+  display: none;
 }
 /* Grid card active listings */
-.grid {
+#content .grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 	padding: 16px;
 	gap: 16px;
-	/* background-color: rgb(116, 121, 136); */
-	max-width: var(--wthNoSide);
+  background-color: wheat;
+  height:100vh;
+  align-content: flex-start;
+  overflow: scroll;
 }
-.card {
+#content .grid .card {
 	height: 280px;
 	padding: 16px;
+  max-width: 180px;
 	margin: 0;
 	display: flex;
 	flex-direction: column;
@@ -148,6 +150,7 @@ main #sidenav .log-info {
 	background-color: #fff;
 	border: 1px solid rgba(200, 200, 200, 0.5);
 }
+
 .card:hover {
 	border: 1px solid rgba(51, 51, 51, 0.5);
 	box-shadow: 1px 1px 5px var(--blue);
@@ -163,7 +166,7 @@ main #sidenav .log-info {
 }
 
 .card[title]:hover::after{
-  background-color: royalblue;
+  background-color:var(--blue);
   color:white;
 }
 .card h5 {
@@ -183,7 +186,7 @@ main #sidenav .log-info {
   overflow: hidden;
   /* two line */
   display: -webkit-box !important;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   white-space: normal;
 }
@@ -196,13 +199,14 @@ main #sidenav .log-info {
 	justify-content: flex-end;
 	align-self: flex-end;
 	flex-grow: 1;
+
 }
 
 
 /* AT MEDIA  */
 @media only screen and (max-width: 960px) {
 	/* styles for browsers larger than 960px; */
-	body {
+	/* body {
 		background-color: pink;
 	}
   main {
@@ -217,30 +221,30 @@ main #sidenav .log-info {
   .grid {
     min-width: none;
     max-width: none;
-  }
+  } */
 @media only screen and (min-width: 1440px) {
 	/* styles for browsers larger than 1440px; */
-	body {
+	/* body {
 		background-color: orange;
-	}
+	} */
 }
 @media only screen and (min-width: 2000px) {
 	/* for sumo sized (mac) screens */
-	body {
+	/* body {
 		background-color: yellow;
-	}
+	} */
 }
 @media only screen and (max-device-width: 480px) {
 	/* styles for mobile browsers smaller than 480px; (iPhone) */
-	body {
+	/* body {
 		background-color: green;
-	}
+	} */
 }
 @media only screen and (device-width: 768px) {
 	/* default iPad screens */
-	body {
+	/* body {
 		background-color: blue;
-	}
+	} */
 }
 /* different techniques for iPad screening */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
