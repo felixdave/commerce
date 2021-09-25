@@ -4,17 +4,23 @@
 <h2>{{ title }}</h2>
 <div class="grid">
     {% for listing in listings %}
-    <a class="card" title="{{listing.title }}" href="{% url 'listing' listing.id %}">
+    <a class="card" href="{% url 'listing' listing.id %}">
         {% if listing.image_url %}
         <img src="{{ listing.image_url }}" alt="{{ listing.title }}" loading="lazy">
         {% endif %}
         <!-- <h5>{{ listing.title }}</h5> -->
-        <p><strong>Price:</strong> ${{ listing.price }}</p>
+        <p class="price"><strong>Price:</strong> ${{ listing.price }}</p>
         {% if listing.category %}
         <p><strong>Category:</strong> {{ listing.category }}</p>
         {% endif %}
-        <p>{{ listing.description }}</p>
-        <p><small class="text-muted">Posted {{ listing.creation_time|date:'m/d/y h:iA' }}</small></p>
+        <p class="body">{{ listing.description }}</p>
+
+        {% if listing.created_in_days %}
+        <p class="datetime">{{ listing.created_in_days }} {{ listing.creation_time|date:'h:i A' }}</p>
+        {% else %}
+        <p class="datetime"><small class="text-muted">{{ listing.creation_time|date:"SHORT_DATETIME_FORMAT" }}</small>
+        </p>
+        {% endif %}
     </a>
     {% empty %}
     No active listings.

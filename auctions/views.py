@@ -14,7 +14,8 @@ from .models import Bid, Category, Comment, Listing, User
 class CreateListingForm(ModelForm):
     class Meta:
         model = Listing
-        fields = ['title', 'description', 'image_url', 'category', 'starting_bid']
+        fields = ['title', 'description',
+                  'image_url', 'category', 'starting_bid']
 
     def __init__(self, *args, **kwargs):
         super(CreateListingForm, self).__init__(*args, **kwargs)
@@ -54,7 +55,8 @@ def categories(request):
 
 def category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
-    listings = Listing.objects.filter(active=True, category=category).order_by("-creation_time").all()
+    listings = Listing.objects.filter(
+        active=True, category=category).order_by("-creation_time").all()
     return render(request, "auctions/index.html", {
         "title": f"Active Listings in {category.name}",
         "listings": listings
@@ -79,7 +81,8 @@ def comment(request, listing_id):
     if request.method == "POST":
         content = request.POST["comment"]
         listing = get_object_or_404(Listing, pk=listing_id)
-        comment = Comment(commenter=request.user, content=content, listing=listing)
+        comment = Comment(commenter=request.user,
+                          content=content, listing=listing)
         comment.save()
         return HttpResponseRedirect(reverse("listing", args=(listing.id,)))
 
@@ -103,16 +106,18 @@ def create(request):
 
 
 def index(request):
-    listings = Listing.objects.filter(active=True).order_by("-creation_time").all()
+    listings = Listing.objects.filter(
+        active=True).order_by("-creation_time").all()
     return render(request, "auctions/index.html", {
         "title": "Active Listings",
-        "listings": listings
+        "listings": listings,
     })
 
 
 def listing(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
-    on_watchlist = request.user.is_authenticated and (listing in request.user.watchlist.all())
+    on_watchlist = request.user.is_authenticated and (
+        listing in request.user.watchlist.all())
     return render(request, "auctions/listing.html", {
         "comments": listing.comments.order_by("-creation_time").all(),
         "listing": listing,
@@ -147,7 +152,8 @@ def logout_view(request):
 
 def profile(request, user_id):
     user = get_object_or_404(User, pk=user_id)
-    listings = user.listings.filter(active=True).order_by("-creation_time").all()
+    listings = user.listings.filter(
+        active=True).order_by("-creation_time").all()
     return render(request, "auctions/index.html", {
         "title": f"Active Listings by {user.username}",
         "listings": listings
@@ -189,10 +195,12 @@ def watchlist(request):
         "listings": listings
     })
 
+
 @login_required
 def watchlist_add(request):
     if request.method == "POST":
-        listing = get_object_or_404(Listing, pk=int(request.POST["listing_id"]))
+        listing = get_object_or_404(
+            Listing, pk=int(request.POST["listing_id"]))
         request.user.watchlist.add(listing)
         return HttpResponseRedirect(reverse("listing", args=(listing.id,)))
 
@@ -200,7 +208,7 @@ def watchlist_add(request):
 @login_required
 def watchlist_delete(request):
     if request.method == "POST":
-        listing = get_object_or_404(Listing, pk=int(request.POST["listing_id"]))
+        listing = get_object_or_404(
+            Listing, pk=int(request.POST["listing_id"]))
         request.user.watchlist.remove(listing)
         return HttpResponseRedirect(reverse("listing", args=(listing.id,)))
-
