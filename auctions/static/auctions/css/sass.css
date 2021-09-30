@@ -79,6 +79,7 @@ main #sidenav {
   width: 230px;
   background-color: var(--drkGrey);
   padding: 16px;
+  transition: 0.5s;
 }
 
 main #sidenav .collapse {
