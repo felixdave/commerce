@@ -15,6 +15,8 @@ let closed = false;
 function slideNav() {
 	let navSide = document.querySelector('#sidenav');
 	let navSideEls = document.querySelectorAll('#sidenav > *');
+	let titleBar = document.querySelector('#content .titleBar');
+	let titleBarEl = document.querySelectorAll('#content .titleBar > *');
 
 	if (closed == false) {
 		navSideEls.forEach((element) => {
@@ -22,19 +24,22 @@ function slideNav() {
 				element.style.transition = '0.2s';
 				element.style.opacity = '0';
 			} else {
-				element.style.color = '#ffa41d';
+				element.style.left = '8px';
 				element.style.transition = '0.5s';
 				element.style.transform = 'rotate(180deg)';
-				element.style.left = '8px';
-				element.style.top = '-6px';
 			}
 		});
 		// Whole nav
 		setTimeout(() => {
 			navSide.style.transition = '0.2s';
 			navSide.style.width = '0';
-			navSide.style.padding = '16px 0px';
+			navSide.style.padding = '16px 0';
+			titleBar.style.padding = '0 32px';
+			titleBarEl.forEach((e) => {
+				e.style.display = 'block';
+			});
 		}, 200);
+
 		closed = true;
 	} else {
 		navSide.removeAttribute('style');
@@ -42,13 +47,15 @@ function slideNav() {
 		navSideEls.forEach((element) => {
 			if (element != navSideEls[0]) {
 				element.removeAttribute('style');
+				element.style.transition = '0.2s';
 			} else {
-				element.style.color = '#ffa41d';
-				element.style.transition = '0.5s';
+				element.style.transition = '.5s';
 				element.style.transform = 'rotate(0deg)';
 				element.style.left = 'inherit';
-				element.style.top = 'inherit';
 			}
+		});
+		titleBarEl.forEach((e) => {
+			e.removeAttribute('style');
 		});
 		closed = false;
 	}

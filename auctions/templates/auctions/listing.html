@@ -8,29 +8,31 @@
 {% endif %}
 
 
+<div class="titleBar"> {% if listing.active %}
+    <h3>Auction</h3>
+    <i class="bi bi-bookmark-fill"></i>
+    <h4>Listing: {{ listing.title }}</h4>
+    <small>{{ listing.bids.count }} bid(s) now</small>
+    {% if listing.winner == user %}
+    <small>Your bid is the current bid.</small>
+    {% endif %}
+    {% else %}
+    <small>Auction over after {{ listing.bids.count }} bid(s).</small>
+    {% if listing.winner == user %}
+    <small>You have won this auction!</small>
+    {% endif %}
+    {% endif %}
+</div>
 
 <div id="listings" class="grid">
-    <div class="titleBar"> {% if listing.active %}
-        <small>{{ listing.bids.count }} bid(s) so far.</small>
-        {% if listing.winner == user %}
-        <small>Your bid is the current bid.</small>
-        {% endif %}
-        {% else %}
-        <small>Auction over after {{ listing.bids.count }} bid(s).</small>
-        {% if listing.winner == user %}
-        <small>You have won this auction!</small>
-        {% endif %}
-        {% endif %}
-    </div>
-    <div class="feature">
-        {% if on_watchlist %}
-        <i class="bi bi-bookmark-fill" title="item on your watchlist"></i>
-        {% endif %}
 
-        {% if listing.image_url %}
-        <img src="{{ listing.image_url }}" alt="{{ listing.title }}" loading="lazy" />
-        {% endif %}
-    </div>
+    <!-- {% if on_watchlist %}
+        <i class="bi bi-bookmark-fill" title="item on your watchlist"></i>
+        {% endif %} -->
+
+    {% if listing.image_url %}
+    <img class="feature" src="{{ listing.image_url }}" alt="{{ listing.title }}" loading="lazy" />
+    {% endif %}
 
     <div class="info">
 
@@ -39,8 +41,8 @@
         <div class="details">
             <ul>
                 <li>by: <a href="{% url 'profile' listing.seller.id %}">{{ listing.seller.username }}</a></li>
-                <li>Category: {{ listing.category|default:"No Category Listed" }}</li>
-                <li>Listed on {{ listing.creation_time }}</li>
+                <li>category: {{ listing.category|default:"No Category Listed" }}</li>
+                <li>listed: {{ listing.creation_time }}</li>
             </ul>
         </div>
 
@@ -85,20 +87,25 @@
     </div>
 
     <!-- Panel 3 -->
+    <div class="desc">
 
-    <p class="description">{{ listing.description }}</p>
+        <p>
 
+            {{ listing.description }}
+        </p>
+
+    </div>
     <!-- Panel 4 -->
 
     <div class="comments">
 
-        <h4>Comments</h4>
+        <h4>Comments about this item:</h4>
 
         {% if user.is_authenticated %}
         <form action="{% url 'comment' listing.id %}" method="post">
             {% csrf_token %}
             <input type="text" name="comment" placeholder="Comment" />
-            <input type="Submit" value="Post New Comment" />
+            <input type="Submit" value="Post" />
         </form>
         {% endif %}
 

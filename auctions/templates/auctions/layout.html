@@ -23,8 +23,8 @@
   <main>
 
     <div id="sidenav">
-      {% if user.is_authenticated %}
       <i class="bi bi-arrow-bar-left collapse"></i>
+      {% if user.is_authenticated %}
       {% endif %}
       <div class="title">
         <h1>Auction</h1>
@@ -42,7 +42,7 @@
         </li>
         {% if user.is_authenticated %}
         <li>
-          <a href="{% url 'watchlist' %}"><i class="bi bi-bookmarks"></i> Watchlist
+          <a href="{% url 'watchlist' %}"><i class="bi bi-bookmark"></i> Watchlist
             {% if request.user.watchlist.count > 0 %}
             <span class="badge badge-secondary">{{ request.user.watchlist.count }}</span>
             {% endif %}
