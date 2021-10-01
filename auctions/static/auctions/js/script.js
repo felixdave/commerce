@@ -3,6 +3,7 @@ console.log('hello');
 document.querySelector('h1').onclick = () => {
 	location.href = '/';
 };
+
 document.querySelector('.titleBar h3').onclick = () => {
 	location.href = '/';
 };
@@ -20,8 +21,10 @@ function slideNav() {
 	let navSideEls = document.querySelectorAll('#sidenav > *');
 	let titleBar = document.querySelector('#content .titleBar');
 	let titleBarEl = document.querySelectorAll('#content .titleBar > *');
+	let titleBarH4 = document.querySelector('#content .titleBar h4');
 
 	if (closed == false) {
+		// if open
 		navSideEls.forEach((element) => {
 			if (element != navSideEls[0]) {
 				element.style.transition = '0.2s';
@@ -30,6 +33,7 @@ function slideNav() {
 				element.style.left = '8px';
 				element.style.transition = '0.5s';
 				element.style.transform = 'rotate(180deg)';
+				titleBarH4.style.display = 'none';
 			}
 		});
 		// Whole nav
@@ -42,9 +46,10 @@ function slideNav() {
 				e.style.display = 'block';
 			});
 		}, 200);
-
+		// set to close
 		closed = true;
 	} else {
+		// if closed
 		navSide.removeAttribute('style');
 
 		navSideEls.forEach((element) => {

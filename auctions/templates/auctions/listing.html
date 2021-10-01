@@ -12,9 +12,9 @@
     <h3>Auction</h3>
     <i class="bi bi-bookmark-fill"></i>
     <h4>Listing: {{ listing.title }}</h4>
-    <small>{{ listing.bids.count }} bid(s) now</small>
+    <small>{{ listing.bids.count }} bid(s)</small>
     {% if listing.winner == user %}
-    <small>Your bid is the current bid.</small>
+    <small>Top Bid: You</small>
     {% endif %}
     {% else %}
     <small>Auction over after {{ listing.bids.count }} bid(s).</small>

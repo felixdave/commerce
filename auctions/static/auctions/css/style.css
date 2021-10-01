@@ -73,16 +73,14 @@ main #sidenav {
 }
 
 main #sidenav i.collapse {
-  color: #ffa41d;
+  color: white;
   position: relative;
   right: -190px;
   top: -8px;
-}
-
-main #sidenav i.collapse:hover,
-main #sidenav .collapse:active {
   color: var(--orange);
   font-weight: bolder;
+  z-index: 999;
+  border-radius: 2px;
 }
 
 main #sidenav .title {
@@ -158,6 +156,10 @@ main #sidenav .log-info i {
   color: white;
 }
 
+main #sidenav .log-info a {
+  color: white;
+}
+
 main #content {
   color: var(--drkGrey);
   background-color: var(--background);
@@ -199,7 +201,6 @@ main #content .titleBar h4 {
 
 main #content #active_listings {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-column-start: auto;
 }
 
 main #content #active_listings h2 {
@@ -278,7 +279,7 @@ main #content #active_listings .card[title]:hover::after {
 }
 
 main #content #listings {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   align-items: flex-start;
   justify-items: stretch;
   padding: 16px;
@@ -387,10 +388,11 @@ main #content #listings .comments ul {
 
 main #content #create_listing {
   padding: 16px;
-  width: 350px;
+  margin: 0 auto;
+  max-width: 400px;
   height: 700px;
-  background-color: #565959;
-  color: white;
+  background-color: var(--background);
+  border: 1px solid #aaa;
 }
 
 main #content #create_listing form {
@@ -408,6 +410,7 @@ main #content #create_listing form textarea,
 main #content #create_listing form select {
   padding: 8px;
   border-radius: 4px;
+  border: 1px solid #aaa;
 }
 
 main #content #create_listing form input[type="submit"] {
@@ -440,6 +443,49 @@ main #content #category li:hover {
 main #content #category li a:hover {
   color: white;
   display: block;
+}
+
+main #content #login,
+main #content #register {
+  margin: 0 auto;
+  background-color: #ddd;
+  max-width: 300px;
+  padding: 0 16px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+main #content #login h2,
+main #content #register h2 {
+  padding: 16px;
+}
+
+main #content #login form,
+main #content #register form {
+  display: flex;
+  flex-direction: column;
+}
+
+main #content #login form input,
+main #content #register form input {
+  border: none;
+  padding: 16px;
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+main #content #login form input[type="submit"],
+main #content #register form input[type="submit"] {
+  width: 50%;
+  align-self: flex-end;
+  background-color: var(--blue);
+  color: white;
+}
+
+main #content #login form a,
+main #content #register form a {
+  color: var(--orange);
 }
 
 @media only screen and (max-width: 800px) {
