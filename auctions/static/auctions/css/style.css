@@ -145,6 +145,10 @@ main #sidenav ul li span {
   font-weight: bold;
 }
 
+main #sidenav .log-info strong {
+  color: var(--orange);
+}
+
 main #sidenav .log-info {
   align-self: flex-end;
   color: white;
@@ -162,16 +166,6 @@ main #content {
   height: 100vh;
   overflow: scroll;
   background-color: white;
-}
-
-main #content li,
-main #content p {
-  font-size: 16px;
-  line-height: 1.5em;
-}
-
-main #content p {
-  padding: 16px;
 }
 
 main #content .titleBar {
@@ -205,6 +199,7 @@ main #content .titleBar h4 {
 
 main #content #active_listings {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-column-start: auto;
 }
 
 main #content #active_listings h2 {
@@ -212,17 +207,16 @@ main #content #active_listings h2 {
 }
 
 main #content #active_listings .card {
+  background-color: #fff;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 4px;
   height: 280px;
-  padding: 16px;
-  max-width: 180px;
   margin: 0;
+  max-width: 170px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  border-radius: 4px;
-  background-color: #fff;
-  border: 1px solid rgba(200, 200, 200, 0.5);
 }
 
 main #content #active_listings .card img {
@@ -290,6 +284,16 @@ main #content #listings {
   padding: 16px;
 }
 
+main #content #listings li,
+main #content #listings p {
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+main #content #listings p {
+  padding: 16px;
+}
+
 main #content #listings .feature {
   height: 350px;
   padding: 16px;
@@ -310,6 +314,12 @@ main #content #listings .info {
   color: var(--lighterGrey);
 }
 
+main #content #listings .info h2 i {
+  color: var(--orange);
+  font-size: 25px;
+  text-shadow: yellow 0px 7px 0px, black 3px 6px 9px;
+}
+
 main #content #listings .info small {
   align-self: flex-end;
   width: 100%;
@@ -319,6 +329,32 @@ main #content #listings .info small {
 main #content #listings .info .details ul {
   padding: 0;
   color: var(--lightText);
+}
+
+main #content #listings .info .watchlist input {
+  background-color: transparent;
+  border: none;
+  color: var(--blue);
+  position: relative;
+  top: -200px;
+  right: -230px;
+  font-size: 12px;
+  text-align: right;
+  width: 100px;
+}
+
+main #content #listings .info .close_or_bid form input[type="number"] {
+  float: left;
+  padding: 8px;
+  margin: 0 8px 8px 0;
+}
+
+main #content #listings .info .close_or_bid form input[type="submit"] {
+  background-color: var(--blue);
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  color: white;
 }
 
 main #content #listings .desc {
@@ -331,7 +367,7 @@ main #content #listings .comments {
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  grid-row: span 20;
+  grid-row: span 4;
   height: 100vh;
   padding: 0 16px;
 }
@@ -343,6 +379,67 @@ main #content #listings .comments h4 {
 main #content #listings .comments form {
   align-self: center;
   background-color: white;
+}
+
+main #content #listings .comments ul {
+  background-color: white;
+}
+
+main #content #create_listing {
+  padding: 16px;
+  width: 350px;
+  height: 700px;
+  background-color: #565959;
+  color: white;
+}
+
+main #content #create_listing form {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+main #content #create_listing form label {
+  padding: 8px;
+}
+
+main #content #create_listing form input,
+main #content #create_listing form textarea,
+main #content #create_listing form select {
+  padding: 8px;
+  border-radius: 4px;
+}
+
+main #content #create_listing form input[type="submit"] {
+  margin-top: 16px;
+  background-color: var(--orange);
+}
+
+main #content #category h2 {
+  padding: 16px;
+}
+
+main #content #category li {
+  float: left;
+  border: 1px solid #565959;
+  border-radius: 50px;
+  padding: 8px;
+  max-width: 200px;
+  text-align: center;
+  margin: 0 16px 16px 0;
+}
+
+main #content #category li:hover {
+  background-color: #ffa41d;
+  border: 1px solid #ffa41d;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+main #content #category li a:hover {
+  color: white;
+  display: block;
 }
 
 @media only screen and (max-width: 800px) {
