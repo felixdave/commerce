@@ -200,7 +200,7 @@ main #content .titleBar h4 {
 }
 
 main #content #active_listings {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
 main #content #active_listings h2 {
@@ -338,7 +338,7 @@ main #content #listings .info .watchlist input {
   color: var(--blue);
   position: relative;
   top: -200px;
-  right: -230px;
+  right: -200px;
   font-size: 12px;
   text-align: right;
   width: 100px;
@@ -369,7 +369,6 @@ main #content #listings .comments {
   flex-direction: column;
   overflow: scroll;
   grid-row: span 4;
-  height: 100vh;
   padding: 0 16px;
 }
 
@@ -492,5 +491,11 @@ main #content #register form a {
   body main #content #listings .desc {
     grid-row: 3/4;
     grid-column: span 1;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  body main #content .titleBar small {
+    text-align: center;
   }
 }

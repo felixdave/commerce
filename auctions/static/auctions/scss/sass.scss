@@ -21,9 +21,7 @@
 	padding: 16px;
 	gap: 16px;
 	background-color: #fff;
-	// height: 100vh;
 	align-content: flex-start;
-	// overflow: scroll;
 }
 
 body {
@@ -187,7 +185,7 @@ main {
 		}
 
 		#active_listings {
-			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 			h2 {
 				display: none;
 			}
@@ -309,7 +307,7 @@ main {
 					color: var(--blue);
 					position: relative;
 					top: -200px;
-					right: -230px;
+					right: -200px;
 					font-size: 12px;
 					text-align: right;
 					width: 100px;
@@ -339,7 +337,6 @@ main {
 				flex-direction: column;
 				overflow: scroll;
 				grid-row: span 4;
-				height: 100vh;
 				padding: 0 16px;
 				h4 {
 					color: #565959;
@@ -446,5 +443,11 @@ main {
 	body main #content #listings .desc {
 		grid-row: 3/4;
 		grid-column: span 1;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	body main #content .titleBar small {
+		text-align: center;
 	}
 }
