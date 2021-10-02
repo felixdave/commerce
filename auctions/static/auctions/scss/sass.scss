@@ -144,6 +144,9 @@ main {
 		.log-info a {
 			color: white;
 		}
+		.log-info i {
+			padding-left: 8px;
+		}
 	}
 
 	#content {
@@ -379,6 +382,12 @@ main {
 				margin-top: 16px;
 				background-color: var(--orange);
 			}
+			i {
+				color: var(--blue);
+				text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
+				position: relative;
+				top: -6px;
+			}
 		}
 		#category {
 			h2 {
@@ -435,6 +444,12 @@ main {
 			}
 			form a {
 				color: var(--orange);
+			}
+			i {
+				color: var(--blue);
+				text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
+				position: relative;
+				top: -6px;
 			}
 		}
 	}

@@ -160,6 +160,10 @@ main #sidenav .log-info a {
   color: white;
 }
 
+main #sidenav .log-info i {
+  padding-left: 8px;
+}
+
 main #content {
   color: var(--drkGrey);
   background-color: var(--background);
@@ -417,6 +421,13 @@ main #content #create_listing form input[type="submit"] {
   background-color: var(--orange);
 }
 
+main #content #create_listing i {
+  color: var(--blue);
+  text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
+  position: relative;
+  top: -6px;
+}
+
 main #content #category h2 {
   padding: 16px;
 }
@@ -485,6 +496,14 @@ main #content #register form input[type="submit"] {
 main #content #login form a,
 main #content #register form a {
   color: var(--orange);
+}
+
+main #content #login i,
+main #content #register i {
+  color: var(--blue);
+  text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
+  position: relative;
+  top: -6px;
 }
 
 @media only screen and (max-width: 800px) {

@@ -9,7 +9,7 @@
 <div id="create_listing">
 
 
-	<h2>Create Listing</h2>
+	<h2>Create New Listing <i class="bi bi-bookmark-fill"></i></h2>
 
 	<form action="{% url 'create' %}" method="post">
 		{% csrf_token %} {% for field in form %}
