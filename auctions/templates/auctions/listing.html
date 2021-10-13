@@ -12,20 +12,9 @@
     <h3>Auction</h3>
     <i class="bi bi-bookmark-fill"></i>
     <h4>{{ listing.title }}</h4>
-    <small>{{ listing.bids.count }} bid(s)</small>
-    {% if listing.winner == user %}
-    <small> Top Bid: You</small>
-    {% endif %}
-    {% else %}
-    <small>Auction over after {{ listing.bids.count }} bid(s).</small>
-    {% if listing.winner == user %}
-    <small>You have won this auction!</small>
-    {% endif %}
-    {% endif %}
 </div>
 
 <div id="listings" class="grid">
-
 
 
     {% if listing.image_url %}
@@ -38,7 +27,23 @@
             <i class="bi bi-bookmark-star-fill" title="item on your watchlist"></i>
             {% endif %}
         </h2>
-
+        <div class="watchlist">
+            {% if user.is_authenticated %}
+            {% if on_watchlist %}
+            <form action="{% url 'watchlist_delete' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="listing_id" value="{{ listing.id }}" />
+                <input type="submit" value="Remove from Watchlist" />
+            </form>
+            {% else %}
+            <form action="{% url 'watchlist_add' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="listing_id" value="{{ listing.id }}" />
+                <input type="submit" value="Add to Watchlist" />
+            </form>
+            {% endif %}
+            {% endif %}
+        </div>
         <div class="details">
             <ul>
                 <li>by: <a href="{% url 'profile' listing.seller.id %}">{{ listing.seller.username }}</a></li>
@@ -46,26 +51,19 @@
                 <li>listed: {{ listing.creation_time }}</li>
             </ul>
         </div>
-
+        <small>{{ listing.bids.count }} bid{{listing.bids.count|pluralize }}</small>
+        {% if listing.winner == user %}
+        <small> Top Bid: You</small>
+        {% endif %}
+        {% else %}
+        <small>Auction over after {{ listing.bids.count }} bid(s).</small>
+        {% if listing.winner == user %}
+        <small>You have won this auction!</small>
+        {% endif %}
+        {% endif %}
         <h3 class="price"> <small>Price</small> ${{ listing.price }}</h3>
 
-        <div class="watchlist">
-            {% if user.is_authenticated %}
-            {% if on_watchlist %}
-            <form action="{% url 'watchlist_delete' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="listing_id" value="{{ listing.id }}" />
-                <input type="submit" value="Unfollow" />
-            </form>
-            {% else %}
-            <form action="{% url 'watchlist_add' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="listing_id" value="{{ listing.id }}" />
-                <input type="submit" value="+ Watchlist" />
-            </form>
-            {% endif %}
-            {% endif %}
-        </div>
+
 
         <div class="close_or_bid">
             {% if listing.active and user.is_authenticated %}

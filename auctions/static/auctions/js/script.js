@@ -66,7 +66,7 @@ function slideNav() {
 			e.removeAttribute('style');
 		});
 		titleBarH4.style.display = 'none';
-		titleBarSmall.style.display = 'none';
+		// titleBarSmall.style.display = 'none';
 
 		closed = false;
 	}

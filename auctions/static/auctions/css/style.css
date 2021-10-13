@@ -45,7 +45,7 @@ body ul {
 
 body a {
   text-decoration: none;
-  color: var(--drkGrey);
+  color: var(--blue);
 }
 
 body h2,
@@ -73,7 +73,6 @@ main #sidenav {
 }
 
 main #sidenav i.collapse {
-  color: white;
   position: relative;
   right: -190px;
   top: -8px;
@@ -222,11 +221,12 @@ main #content #active_listings .card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--drkGrey);
 }
 
 main #content #active_listings .card img {
   height: 130px;
-  width: 150px;
+  width: 145px;
 }
 
 main #content #active_listings .card h5 {
@@ -308,7 +308,6 @@ main #content #listings .feature {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eee;
 }
 
 main #content #listings .info {
@@ -326,9 +325,8 @@ main #content #listings .info h2 i {
 }
 
 main #content #listings .info small {
-  align-self: flex-end;
   width: 100%;
-  color: var(--orange);
+  font-weight: bold;
 }
 
 main #content #listings .info .details ul {
@@ -336,16 +334,17 @@ main #content #listings .info .details ul {
   color: var(--lightText);
 }
 
+main #content #listings .info .details ul li {
+  font-size: 12px;
+}
+
 main #content #listings .info .watchlist input {
   background-color: transparent;
   border: none;
   color: var(--blue);
-  position: relative;
-  top: -200px;
-  right: -200px;
+  padding: 16px 0 0 0;
+  margin: 0;
   font-size: 12px;
-  text-align: right;
-  width: 100px;
 }
 
 main #content #listings .info .close_or_bid form input[type="number"] {
@@ -368,7 +367,6 @@ main #content #listings .desc {
 }
 
 main #content #listings .comments {
-  background-color: #eee;
   display: flex;
   flex-direction: column;
   overflow: scroll;
@@ -377,23 +375,39 @@ main #content #listings .comments {
 }
 
 main #content #listings .comments h4 {
-  color: #565959;
+  font-size: 15px;
+  text-align: center;
+  align-self: flex-start;
 }
 
 main #content #listings .comments form {
   align-self: center;
-  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+main #content #listings .comments form input {
+  padding: 0;
+}
+
+main #content #listings .comments form input[name="comment"] {
+  width: 80%;
 }
 
 main #content #listings .comments ul {
-  background-color: white;
+  background-color: #eee;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background: #eeeeee;
+  box-shadow: inset 20px 20px 60px #cacaca, inset -20px -20px 60px #ffffff;
 }
 
 main #content #create_listing {
   padding: 16px;
   margin: 0 auto;
   max-width: 400px;
-  height: 700px;
+  height: 100vh;
   background-color: var(--background);
   border: 1px solid #aaa;
 }
@@ -442,12 +456,8 @@ main #content #category li {
   margin: 0 16px 16px 0;
 }
 
-main #content #category li:hover {
-  background-color: #ffa41d;
-  border: 1px solid #ffa41d;
-  cursor: pointer;
-  font-weight: bold;
-  color: white;
+main #content #category li a {
+  color: var(--drkGrey);
 }
 
 main #content #category li a:hover {
@@ -455,8 +465,15 @@ main #content #category li a:hover {
   display: block;
 }
 
+main #content #category li:hover {
+  background-color: #ffa41d;
+  display: block;
+  cursor: pointer;
+}
+
 main #content #login,
 main #content #register {
+  height: 100vh;
   margin: 0 auto;
   background-color: #ddd;
   max-width: 300px;
@@ -506,15 +523,14 @@ main #content #register i {
   top: -6px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 965px) {
   body main #content #listings .desc {
-    grid-row: 3/4;
+    grid-row: 3/4 span 2;
     grid-column: span 1;
+    padding-right: 0;
   }
-}
-
-@media only screen and (max-width: 800px) {
-  body main #content .titleBar small {
-    text-align: center;
+  body main #content #listings .comments {
+    grid-column: span 1;
+    padding: 0;
   }
 }

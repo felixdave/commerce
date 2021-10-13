@@ -43,7 +43,7 @@ body {
 	}
 	a {
 		text-decoration: none;
-		color: var(--drkGrey);
+		color: var(--blue);
 	}
 	h2,
 	h5,
@@ -68,7 +68,6 @@ main {
 		background-color: var(--drkGrey);
 		padding: 16px;
 		i.collapse {
-			color: white;
 			position: relative;
 			right: -190px;
 			top: -8px;
@@ -183,8 +182,6 @@ main {
 				flex-grow: 1;
 				font-size: 12px;
 			}
-			// small{
-			// }
 		}
 
 		#active_listings {
@@ -203,9 +200,10 @@ main {
 				display: flex; // Inner
 				flex-direction: column;
 				align-items: center;
+				color: var(--drkGrey);
 				img {
 					height: 130px;
-					width: 150px;
+					width: 145px;
 				}
 				h5 {
 					display: none;
@@ -279,7 +277,6 @@ main {
 				display: flex; // Inner flex
 				justify-content: center;
 				align-items: center;
-				background-color: #eee;
 			}
 
 			.info {
@@ -294,26 +291,27 @@ main {
 					text-shadow: yellow 0px 7px 0px, black 3px 6px 9px;
 				}
 				small {
-					align-self: flex-end;
+					// align-self: flex-end;
 					width: 100%;
-					color: var(--orange);
+					// color: var(--);
+					font-weight: bold;
 				}
 				.details {
 					ul {
 						padding: 0;
 						color: var(--lightText);
+						li {
+							font-size: 12px;
+						}
 					}
 				}
 				.watchlist input {
 					background-color: transparent;
 					border: none;
 					color: var(--blue);
-					position: relative;
-					top: -200px;
-					right: -200px;
+					padding: 16px 0 0 0;
+					margin: 0;
 					font-size: 12px;
-					text-align: right;
-					width: 100px;
 				}
 				.close_or_bid form {
 					input[type="number"] {
@@ -335,21 +333,35 @@ main {
 				grid-column: span 2;
 			}
 			.comments {
-				background-color: #eee;
 				display: flex; // Inner flex
 				flex-direction: column;
 				overflow: scroll;
 				grid-row: span 4;
 				padding: 0 16px;
+
 				h4 {
-					color: #565959;
+					font-size: 15px;
+					text-align: center;
+					align-self: flex-start;
 				}
 				form {
 					align-self: center;
-					background-color: white;
+					width: 100%;
+					display: flex;
+					justify-content: space-evenly;
+					input {
+						padding: 0;
+					}
+					input[name="comment"] {
+						width: 80%;
+					}
 				}
 				ul {
-					background-color: white;
+					background-color: #eee;
+					padding: 8px 16px;
+					border-radius: 5px;
+					background: #eeeeee;
+					box-shadow: inset 20px 20px 60px #cacaca, inset -20px -20px 60px #ffffff;
 				}
 			}
 		}
@@ -357,7 +369,7 @@ main {
 			padding: 16px;
 			margin: 0 auto;
 			max-width: 400px;
-			height: 700px;
+			height: 100vh;
 			background-color: var(--background);
 			border: 1px solid #aaa;
 			form {
@@ -401,21 +413,24 @@ main {
 				max-width: 200px;
 				text-align: center;
 				margin: 0 16px 16px 0;
+				a {
+					color: var(--drkGrey);
+				}
+				a:hover {
+					color: white;
+					display: block;
+				}
 			}
+
 			li:hover {
 				background-color: #ffa41d;
-				border: 1px solid #ffa41d;
-				cursor: pointer;
-				font-weight: bold;
-				color: white;
-			}
-			li a:hover {
-				color: white;
 				display: block;
+				cursor: pointer;
 			}
 		}
 		#login,
 		#register {
+			height: 100vh;
 			margin: 0 auto;
 			background-color: #ddd;
 			max-width: 300px;
@@ -454,15 +469,20 @@ main {
 		}
 	}
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 965px) {
 	body main #content #listings .desc {
-		grid-row: 3/4;
+		grid-row: 3/4 span 2;
 		grid-column: span 1;
+		padding-right: 0;
+	}
+	body main #content #listings .comments {
+		grid-column: span 1;
+		padding: 0;
 	}
 }
 
-@media only screen and (max-width: 800px) {
-	body main #content .titleBar small {
-		text-align: center;
-	}
-}
+// @media only screen and (max-width: 800px) {
+// 	body main #content .titleBar small {
+// 		text-align: center;
+// 	}
+// }
