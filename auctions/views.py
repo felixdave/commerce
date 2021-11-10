@@ -165,6 +165,29 @@ def register(request):
         username = request.POST["username"]
         email = request.POST["email"]
 
+        if username == None:
+            return render(request, "auctions/register.html", {
+            "message": "Username is none"
+            })
+        else:
+            return render(request, "auctions/register.html", {
+            "message": f"{email}"
+            })
+        
+        # if username and email != None: 
+        #     if authenticate(request, username=username):
+        #         return render(request, "auctions/register.html", {
+        #             "message": "True"
+        #         })
+        #     else:
+        #         return render(request, "auctions/register.html", {
+        #             "message": f'username,{username}' 
+        #         })
+        # else:
+        #    return render(request, "auctions/register.html", {
+        #         "message": f'One of these is null' 
+        #     })
+
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]

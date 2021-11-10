@@ -63,7 +63,7 @@
         {% endif %}
         <h3 class="price"> <small>Price</small> ${{ listing.price }}</h3>
 
-
+        <a href="{% url 'login' %}">Log in to bid </a>
 
         <div class="close_or_bid">
             {% if listing.active and user.is_authenticated %}
