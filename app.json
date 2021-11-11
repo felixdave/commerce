@@ -2,7 +2,7 @@
   "name": "Commerce Auction Site",
   "description": "Deployed to Heroku.",
   "image": "heroku/python",
-  "repository": "https://github.com/heroku/commerce-felixdave",
+  "repository": "https://github.com/felixdave/commerce-felixdave",
   "keywords": ["python", "django" ],
   "addons": [ "heroku-postgresql" ],
   "env": {
