@@ -10,21 +10,32 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import environ
 import os
 import django_heroku
 
+# Initialise environment variables
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# False if not in os.environ because of casting above
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -77,12 +88,12 @@ WSGI_APPLICATION = 'commerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'commercedb',
-        'USER':'postgres',
-        'PASSWORD':'SMLXL22',
-        'HOST':'LOCALHOST',
-        'PORT':'5432'
+        'ENGINE':env('ENGINE'),
+        'NAME': env('NAME'),
+        'USER':env('USER'),
+        'PASSWORD':env('PASSWORD'),
+        'HOST':env('HOST'),
+        'PORT':env('PORT'),
     }
 }
 
