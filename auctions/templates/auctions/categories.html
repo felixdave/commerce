@@ -1,24 +1,26 @@
-{% extends "auctions/layout.html" %}
+{% extends "auctions/layout.html" %} {% load static %} {% block body %}
 
-{% block body %}
 <div class="titleBar">
-    <h3>Auction</h3>
-    <i class="bi bi-bookmark-fill"></i>
-    <h4>Choose a category</h4>
+	<h3>Auction</h3>
+	<i class="bi bi-bookmark-fill"></i>
+	<h4>Choose a category</h4>
 </div>
 <div id="category">
+	<h2>Categories</h2>
 
-    <h2>Categories</h2>
-
-    <ul>
-        {% for category in categories %}
-        <li>
-            <a href="{% url 'category' category.id %}">
-                {{ category }}
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
+	<ul>
+		{% for category in categories %}
+		<li>
+			<a href="{% url 'category' category.id %}"> {{ category }} </a>
+		</li>
+		{% endfor %}
+	</ul>
 </div>
-
+<br />
+<h1>Hello</h1>
+<img src="{% static 'auctions/img/felix1.jpeg' %}" alt="felix" />
+<img
+	src="{% static 'auctions/img/undraw_Pair_programming_re_or4x.png' %}"
+	alt="people"
+/>
 {% endblock %}
