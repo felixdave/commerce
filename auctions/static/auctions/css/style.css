@@ -405,11 +405,11 @@ main #content #listings .comments ul {
 
 main #content #create_listing {
   padding: 16px;
-  margin: 0 auto;
+  margin: 1rem auto;
   max-width: 400px;
-  height: 100vh;
   background-color: var(--background);
   border: 1px solid #aaa;
+  border-radius: 5px;
 }
 
 main #content #create_listing form {
@@ -543,3 +543,49 @@ main #content #register div {
     padding: 0;
   }
 }
+
+#content{
+  position: relative;
+}
+
+#logStatus{
+  height: 32px;
+  background-color: var(--drkGrey);
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  float:right;
+  color:#fff;
+  font-size:.5rem;
+}
+
+#logStatus a, #logStatus i {
+  padding: 0 .5rem;
+  font-weight:normal;   
+  color:white;
+}
+#logStatus p , #logStatus strong{
+  font-size:12px;
+  padding:0 2px;
+}
+
+.titleBar h3{
+  cursor: pointer;
+}
+
+#bidClosed{
+  position:relative;
+  top:.5rem;
+  background-color: var(--orange);
+  color:#333;
+  border-radius:5px;
+  padding:8px;
+  font-size:12px;  
+  font-weight:bold;
+
+}
+.paddingLeft{
+  margin:1rem 1rem 0;
+  font-size: 2rem;
+}
+

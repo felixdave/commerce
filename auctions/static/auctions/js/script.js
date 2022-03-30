@@ -1,4 +1,3 @@
-console.log('hello');
 
 document.querySelector('h1').onclick = () => {
 	location.href = '/';
@@ -8,9 +7,6 @@ document.querySelector('.titleBar h3').onclick = () => {
 	location.href = '/';
 };
 
-const date = new Date();
-const offset = date.getTimezoneOffset();
-console.log(offset / 60);
 
 document.querySelector('.collapse').onclick = slideNav;
 

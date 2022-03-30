@@ -34,7 +34,6 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.title
-    # for this listing, get amount list, get maximum
 
     def top_bid(self):
         try:

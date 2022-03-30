@@ -7,489 +7,580 @@
 	--background: rgb(219, 218, 218);
 	--lightText: #565959;
 	--titleBar: #242f3e;
-}
-
-* {
+  }
+  
+  * {
 	box-sizing: border-box;
-}
-
-/* GLOBALS */
-// Base grid for all pages
-
-.grid {
+  }
+  
+  /* GLOBALS */
+  .grid {
 	display: grid;
 	padding: 16px;
 	gap: 16px;
 	background-color: #fff;
 	align-content: flex-start;
-}
-
-body {
-	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
-		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  
+  body {
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	background-color: #ededed;
-	img {
-		object-fit: scale-down;
-		border-radius: 2px;
-	}
-	i {
-		font-size: 16px;
-		height: 16px;
-		width: 16px;
-		margin-right: 8px;
-	}
-	ul {
-		list-style: none;
-	}
-	a {
-		text-decoration: none;
-		color: var(--blue);
-	}
-	h2,
-	h5,
-	p {
-		margin: 0;
-	}
-}
-
-/* MAIN */
-main {
+  }
+  
+  body img {
+	object-fit: scale-down;
+	border-radius: 2px;
+  }
+  
+  body i {
+	font-size: 16px;
+	height: 16px;
+	width: 16px;
+	margin-right: 8px;
+  }
+  
+  body ul {
+	list-style: none;
+  }
+  
+  body a {
+	text-decoration: none;
+	color: var(--blue);
+  }
+  
+  body h2,
+  body h5,
+  body p {
+	margin: 0;
+  }
+  
+  /* MAIN */
+  main {
 	display: flex;
 	justify-content: center;
 	align-items: stretch;
-
-	#sidenav {
-		/* flex for nav items */
-		display: flex;
-		flex-direction: column;
-		flex-shrink: 0;
-		height: 100vh;
-		width: 230px;
-		background-color: var(--drkGrey);
-		padding: 16px;
-		i.collapse {
-			position: relative;
-			right: -190px;
-			top: -8px;
-			color: var(--orange);
-			font-weight: bolder;
-			z-index: 999;
-			border-radius: 2px;
-		}
-
-		.title {
-			display: flex;
-			align-items: flex-end;
-			justify-content: center;
-			height: 32px;
-			width: 100%;
-			margin-bottom: 8px;
-
-			h1 {
-				font-size: 25px;
-				font-weight: normal;
-				margin: 0;
-				color: white;
-			}
-			i {
-				font-size: 20px;
-				align-self: flex-start;
-				color: var(--blue);
-				text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
-			}
-		}
-		hr {
-			border-top: none;
-			border-width: 1px;
-			opacity: 0.25;
-			margin: 16px 0;
-		}
-		ul {
-			margin: 0;
-			padding: 0;
-			display: flex;
-			flex-direction: column;
-			flex-grow: 1;
-			cursor: pointer;
-			li:hover {
-				border-radius: 4px;
-				background-color: var(--blue);
-				font-size: 16px;
-			}
-			li a {
-				padding: 10px 16px;
-				display: block;
-				color: white;
-			}
-			li span {
-				color: var(--orange);
-				position: relative;
-				left: -95px;
-				font-size: 11px;
-				top: -3px;
-				font-weight: bold;
-			}
-		}
-		.log-info strong {
-			color: var(--orange);
-		}
-		.log-info {
-			align-self: flex-end;
-			color: white;
-			i {
-				color: white;
-			}
-		}
-		.log-info a {
-			color: white;
-		}
-		.log-info i {
-			padding-left: 8px;
-		}
-	}
-
-	#content {
-		color: var(--drkGrey);
-		background-color: var(--background);
-		width: 100%;
-		max-width: var(--wthNoSide);
-		height: 100vh;
-		overflow: scroll;
-		background-color: white;
-
-		.titleBar {
-			display: flex;
-			height: 32px;
-			color: #fff;
-			justify-content: flex-end;
-			align-items: center;
-			background-color: #242f3e;
-			padding: 0 16px;
-			// z-index: 99;
-			i {
-				display: none;
-				color: var(--blue);
-				text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
-				position: relative;
-				top: -6px;
-			}
-			h3 {
-				display: none;
-				font-weight: normal;
-			}
-			h4 {
-				font-weight: normal;
-				flex-grow: 1;
-				font-size: 12px;
-			}
-		}
-
-		#active_listings {
-			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-			h2 {
-				display: none;
-			}
-			.card {
-				background-color: #fff;
-				border: 1px solid rgba(200, 200, 200, 0.5);
-				border-radius: 4px;
-				height: 280px;
-				margin: 0;
-				max-width: 170px;
-				padding: 16px;
-				display: flex; // Inner
-				flex-direction: column;
-				align-items: center;
-				color: var(--drkGrey);
-				img {
-					height: 130px;
-					width: 145px;
-				}
-				h5 {
-					display: none;
-				}
-				.price {
-					align-self: flex-start;
-					padding-top: 16px;
-				}
-				.body {
-					padding-top: 16px;
-					align-self: flex-start;
-					font-size: 12px;
-					text-overflow: ellipsis;
-					overflow: hidden;
-					/* two line */
-					display: -webkit-box !important;
-					-webkit-line-clamp: 3;
-					-webkit-box-orient: vertical;
-					white-space: normal;
-				}
-				.datetime {
-					font-size: 10px;
-					color: rgb(150, 150, 150);
-					display: flex;
-					flex-direction: column;
-					justify-content: flex-end;
-					align-self: flex-end;
-					flex-grow: 1;
-				}
-			}
-			.card:hover {
-				border: 1px solid rgba(51, 51, 51, 0.5);
-				box-shadow: 1px 1px 5px var(--blue);
-				> img {
-					transform: scale3d(1.1, 1.1, 1);
-					transition-duration: 0.5s;
-					transition-timing-function: ease;
-					transition-property: transform;
-				}
-				h5 {
-					display: block;
-				}
-			}
-			.card[title]:hover::after {
-				background-color: var(--blue);
-				color: white;
-			}
-		}
-
-		#listings {
-			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-			align-items: flex-start;
-			justify-items: stretch;
-			// grid-auto-flow: dense;
-			padding: 16px;
-			li,
-			p {
-				font-size: 16px;
-				line-height: 1.5em;
-			}
-			p {
-				padding: 16px;
-			}
-			.feature {
-				height: 350px;
-				// width: 100%;
-				padding: 16px;
-				overflow: hidden;
-				z-index: 1;
-				object-fit: scale-down;
-				display: flex; // Inner flex
-				justify-content: center;
-				align-items: center;
-			}
-
-			.info {
-				color: #565959;
-				padding: 8px;
-				display: flex; // Inner
-				flex-direction: column;
-				color: var(--lighterGrey);
-				h2 i {
-					color: var(--orange);
-					font-size: 25px;
-					text-shadow: yellow 0px 7px 0px, black 3px 6px 9px;
-				}
-				small {
-					// align-self: flex-end;
-					width: 100%;
-					// color: var(--);
-					font-weight: bold;
-				}
-				.details {
-					ul {
-						padding: 0;
-						color: var(--lightText);
-						li {
-							font-size: 12px;
-						}
-					}
-				}
-				.watchlist input {
-					background-color: transparent;
-					border: none;
-					color: var(--blue);
-					padding: 16px 0 0 0;
-					margin: 0;
-					font-size: 12px;
-				}
-				.close_or_bid form {
-					input[type="number"] {
-						float: left;
-						padding: 8px;
-						margin: 0 8px 8px 0;
-					}
-					input[type="submit"] {
-						background-color: var(--blue);
-						border: none;
-						border-radius: 4px;
-						padding: 8px;
-						color: white;
-					}
-				}
-			}
-			.desc {
-				grid-row: 2/3;
-				grid-column: span 2;
-			}
-			.comments {
-				display: flex; // Inner flex
-				flex-direction: column;
-				overflow: scroll;
-				grid-row: span 4;
-				padding: 0 16px;
-
-				h4 {
-					font-size: 15px;
-					text-align: center;
-					align-self: flex-start;
-				}
-				form {
-					align-self: center;
-					width: 100%;
-					display: flex;
-					justify-content: space-evenly;
-					input {
-						padding: 0;
-					}
-					input[name="comment"] {
-						width: 80%;
-					}
-				}
-				ul {
-					background-color: #eee;
-					padding: 8px 16px;
-					border-radius: 5px;
-					background: #eeeeee;
-					box-shadow: inset 20px 20px 60px #cacaca, inset -20px -20px 60px #ffffff;
-				}
-			}
-		}
-		#create_listing {
-			padding: 16px;
-			margin: 0 auto;
-			max-width: 400px;
-			height: 100vh;
-			background-color: var(--background);
-			border: 1px solid #aaa;
-			form {
-				display: flex;
-				flex-direction: column;
-				// justify-content: flex-start;
-				// align-items: center;
-				padding: 8px;
-			}
-			form label {
-				padding: 8px;
-			}
-			form input,
-			form textarea,
-			form select {
-				padding: 8px;
-				border-radius: 4px;
-				border: 1px solid #aaa;
-			}
-
-			form input[type="submit"] {
-				margin-top: 16px;
-				background-color: var(--orange);
-			}
-			i {
-				color: var(--blue);
-				text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
-				position: relative;
-				top: -6px;
-			}
-		}
-		#category {
-			h2 {
-				padding: 16px;
-			}
-			li {
-				float: left;
-				border: 1px solid #565959;
-				border-radius: 50px;
-				padding: 8px;
-				max-width: 200px;
-				text-align: center;
-				margin: 0 16px 16px 0;
-				a {
-					color: var(--drkGrey);
-				}
-				a:hover {
-					color: white;
-					display: block;
-				}
-			}
-
-			li:hover {
-				background-color: #ffa41d;
-				display: block;
-				cursor: pointer;
-			}
-		}
-		#login,
-		#register {
-			height: 500px;
-			margin: 0 auto;
-			margin-top: 10vh;
-			background-color: #ddd;
-			max-width: 300px;
-			padding: 0 16px;
-			border-radius: 6px;
-			margin-bottom: 8px;
-			border-radius: 5px;
-			background: #e0e0e0;
-			box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-			h2 {
-				padding: 16px;
-			}
-			form {
-				display: flex;
-				flex-direction: column;
-			}
-			form input {
-				border: none;
-				padding: 16px;
-				width: 100%;
-				border-radius: 4px;
-				margin-bottom: 16px;
-			}
-			form input[type="submit"] {
-				width: 50%;
-				align-self: flex-end;
-				background-color: var(--blue);
-				color: white;
-			}
-			form a {
-				color: var(--orange);
-			}
-			i {
-				color: var(--blue);
-				text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
-				position: relative;
-				top: -6px;
-			}
-			div {
-				padding: 16px;
-			}
-		}
-	}
-}
-@media only screen and (max-width: 965px) {
+  }
+  
+  main #sidenav {
+	/* flex for nav items */
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	height: 100vh;
+	width: 230px;
+	background-color: var(--drkGrey);
+	padding: 16px;
+  }
+  
+  main #sidenav i.collapse {
+	position: relative;
+	right: -190px;
+	top: -8px;
+	color: var(--orange);
+	font-weight: bolder;
+	z-index: 999;
+	border-radius: 2px;
+  }
+  
+  main #sidenav .title {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	height: 32px;
+	width: 100%;
+	margin-bottom: 8px;
+  }
+  
+  main #sidenav .title h1 {
+	font-size: 25px;
+	font-weight: normal;
+	margin: 0;
+	color: white;
+  }
+  
+  main #sidenav .title i {
+	font-size: 20px;
+	align-self: flex-start;
+	color: var(--blue);
+	text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
+  }
+  
+  main #sidenav hr {
+	border-top: none;
+	border-width: 1px;
+	opacity: 0.25;
+	margin: 16px 0;
+  }
+  
+  main #sidenav ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	cursor: pointer;
+  }
+  
+  main #sidenav ul li:hover {
+	border-radius: 4px;
+	background-color: var(--blue);
+	font-size: 16px;
+  }
+  
+  main #sidenav ul li a {
+	padding: 10px 16px;
+	display: block;
+	color: white;
+  }
+  
+  main #sidenav ul li span {
+	color: var(--orange);
+	position: relative;
+	left: -95px;
+	font-size: 11px;
+	top: -3px;
+	font-weight: bold;
+  }
+  
+  main #sidenav .log-info strong {
+	color: var(--orange);
+  }
+  
+  main #sidenav .log-info {
+	align-self: flex-end;
+	color: white;
+  }
+  
+  main #sidenav .log-info i {
+	color: white;
+  }
+  
+  main #sidenav .log-info a {
+	color: white;
+  }
+  
+  main #sidenav .log-info i {
+	padding-left: 8px;
+  }
+  
+  main #content {
+	color: var(--drkGrey);
+	background-color: var(--background);
+	width: 100%;
+	max-width: var(--wthNoSide);
+	height: 100vh;
+	overflow: scroll;
+	background-color: white;
+  }
+  
+  main #content .titleBar {
+	display: flex;
+	height: 32px;
+	color: #fff;
+	justify-content: flex-end;
+	align-items: center;
+	background-color: #242f3e;
+	padding: 0 16px;
+  }
+  
+  main #content .titleBar i {
+	display: none;
+	color: var(--blue);
+	text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
+	position: relative;
+	top: -6px;
+  }
+  
+  main #content .titleBar h3 {
+	display: none;
+	font-weight: normal;
+  }
+  
+  main #content .titleBar h4 {
+	font-weight: normal;
+	flex-grow: 1;
+	font-size: 12px;
+  }
+  
+  main #content #active_listings {
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  main #content #active_listings h2 {
+	display: none;
+  }
+  
+  main #content #active_listings .card {
+	background-color: #fff;
+	border: 1px solid rgba(200, 200, 200, 0.5);
+	border-radius: 4px;
+	height: 280px;
+	margin: 0;
+	max-width: 170px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--drkGrey);
+  }
+  
+  main #content #active_listings .card img {
+	height: 130px;
+	width: 145px;
+  }
+  
+  main #content #active_listings .card h5 {
+	display: none;
+  }
+  
+  main #content #active_listings .card .price {
+	align-self: flex-start;
+	padding-top: 16px;
+  }
+  
+  main #content #active_listings .card .body {
+	padding-top: 16px;
+	align-self: flex-start;
+	font-size: 12px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	/* two line */
+	display: -webkit-box !important;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+  }
+  
+  main #content #active_listings .card .datetime {
+	font-size: 10px;
+	color: #969696;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-self: flex-end;
+	flex-grow: 1;
+  }
+  
+  main #content #active_listings .card:hover {
+	border: 1px solid rgba(51, 51, 51, 0.5);
+	box-shadow: 1px 1px 5px var(--blue);
+  }
+  
+  main #content #active_listings .card:hover > img {
+	transform: scale3d(1.1, 1.1, 1);
+	transition-duration: 0.5s;
+	transition-timing-function: ease;
+	transition-property: transform;
+  }
+  
+  main #content #active_listings .card:hover h5 {
+	display: block;
+  }
+  
+  main #content #active_listings .card[title]:hover::after {
+	background-color: var(--blue);
+	color: white;
+  }
+  
+  main #content #listings {
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	align-items: flex-start;
+	justify-items: stretch;
+	padding: 16px;
+  }
+  
+  main #content #listings li,
+  main #content #listings p {
+	font-size: 16px;
+	line-height: 1.5em;
+  }
+  
+  main #content #listings p {
+	padding: 16px;
+  }
+  
+  main #content #listings .feature {
+	height: 350px;
+	padding: 16px;
+	overflow: hidden;
+	z-index: 1;
+	object-fit: scale-down;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  main #content #listings .info {
+	color: #565959;
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	color: var(--lighterGrey);
+  }
+  
+  main #content #listings .info h2 i {
+	color: var(--orange);
+	font-size: 25px;
+	text-shadow: yellow 0px 7px 0px, black 3px 6px 9px;
+  }
+  
+  main #content #listings .info small {
+	width: 100%;
+	font-weight: bold;
+  }
+  
+  main #content #listings .info .details ul {
+	padding: 0;
+	color: var(--lightText);
+  }
+  
+  main #content #listings .info .details ul li {
+	font-size: 12px;
+  }
+  
+  main #content #listings .info .watchlist input {
+	background-color: transparent;
+	border: none;
+	color: var(--blue);
+	padding: 16px 0 0 0;
+	margin: 0;
+	font-size: 12px;
+  }
+  
+  main #content #listings .info .close_or_bid form input[type="number"] {
+	float: left;
+	padding: 8px;
+	margin: 0 8px 8px 0;
+  }
+  
+  main #content #listings .info .close_or_bid form input[type="submit"] {
+	background-color: var(--blue);
+	border: none;
+	border-radius: 4px;
+	padding: 8px;
+	color: white;
+  }
+  
+  main #content #listings .desc {
+	grid-row: 2/3;
+	grid-column: span 2;
+  }
+  
+  main #content #listings .comments {
+	display: flex;
+	flex-direction: column;
+	overflow: scroll;
+	grid-row: span 4;
+	padding: 0 16px;
+  }
+  
+  main #content #listings .comments h4 {
+	font-size: 15px;
+	text-align: center;
+	align-self: flex-start;
+  }
+  
+  main #content #listings .comments form {
+	align-self: center;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+  }
+  
+  main #content #listings .comments form input {
+	padding: 0;
+  }
+  
+  main #content #listings .comments form input[name="comment"] {
+	width: 80%;
+  }
+  
+  main #content #listings .comments ul {
+	background-color: #eee;
+	padding: 8px 16px;
+	border-radius: 5px;
+	background: #eeeeee;
+	box-shadow: inset 20px 20px 60px #cacaca, inset -20px -20px 60px #ffffff;
+  }
+  
+  main #content #create_listing {
+	padding: 16px;
+	margin: 1rem auto;
+	max-width: 400px;
+	background-color: var(--background);
+	border: 1px solid #aaa;
+	border-radius: 5px;
+  }
+  
+  main #content #create_listing form {
+	display: flex;
+	flex-direction: column;
+	padding: 8px;
+  }
+  
+  main #content #create_listing form label {
+	padding: 8px;
+  }
+  
+  main #content #create_listing form input,
+  main #content #create_listing form textarea,
+  main #content #create_listing form select {
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #aaa;
+  }
+  
+  main #content #create_listing form input[type="submit"] {
+	margin-top: 16px;
+	background-color: var(--orange);
+  }
+  
+  main #content #create_listing i {
+	color: var(--blue);
+	text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
+	position: relative;
+	top: -6px;
+  }
+  
+  main #content #category h2 {
+	padding: 16px;
+  }
+  
+  main #content #category li {
+	float: left;
+	border: 1px solid #565959;
+	border-radius: 50px;
+	padding: 8px;
+	max-width: 200px;
+	text-align: center;
+	margin: 0 16px 16px 0;
+  }
+  
+  main #content #category li a {
+	color: var(--drkGrey);
+  }
+  
+  main #content #category li a:hover {
+	color: white;
+	display: block;
+  }
+  
+  main #content #category li:hover {
+	background-color: #ffa41d;
+	display: block;
+	cursor: pointer;
+  }
+  
+  main #content #login,
+  main #content #register {
+	height: 500px;
+	margin: 0 auto;
+	margin-top: 10vh;
+	background-color: #ddd;
+	max-width: 300px;
+	padding: 0 16px;
+	border-radius: 6px;
+	margin-bottom: 8px;
+	border-radius: 5px;
+	background: #e0e0e0;
+	box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  }
+  
+  main #content #login h2,
+  main #content #register h2 {
+	padding: 16px;
+  }
+  
+  main #content #login form,
+  main #content #register form {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  main #content #login form input,
+  main #content #register form input {
+	border: none;
+	padding: 16px;
+	width: 100%;
+	border-radius: 4px;
+	margin-bottom: 16px;
+  }
+  
+  main #content #login form input[type="submit"],
+  main #content #register form input[type="submit"] {
+	width: 50%;
+	align-self: flex-end;
+	background-color: var(--blue);
+	color: white;
+  }
+  
+  main #content #login form a,
+  main #content #register form a {
+	color: var(--orange);
+  }
+  
+  main #content #login i,
+  main #content #register i {
+	color: var(--blue);
+	text-shadow: #ffa41d 0px 4px 0px, yellow 0px 7px 0px;
+	position: relative;
+	top: -6px;
+  }
+  
+  main #content #login div,
+  main #content #register div {
+	padding: 16px;
+  }
+  
+  @media only screen and (max-width: 965px) {
 	body main #content #listings .desc {
-		grid-row: 3/4 span 2;
-		grid-column: span 1;
-		padding-right: 0;
+	  grid-row: 3/4 span 2;
+	  grid-column: span 1;
+	  padding-right: 0;
 	}
 	body main #content #listings .comments {
-		grid-column: span 1;
-		padding: 0;
+	  grid-column: span 1;
+	  padding: 0;
 	}
-}
-
-// @media only screen and (max-width: 800px) {
-// 	body main #content .titleBar small {
-// 		text-align: center;
-// 	}
-// }
+  }
+  
+  #content{
+	position: relative;
+  }
+  
+  #logStatus{
+	height: 32px;
+	background-color: var(--drkGrey);
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	float:right;
+	color:#fff;
+	font-size:.5rem;
+  }
+  
+  #logStatus a, #logStatus i {
+	padding: 0 .5rem;
+	font-weight:normal;   
+	color:white;
+  }
+  #logStatus p , #logStatus strong{
+	font-size:12px;
+	padding:0 2px;
+  }
+  
+  .titleBar h3{
+	cursor: pointer;
+  }
+  
+  #bidClosed{
+	position:relative;
+	top:.5rem;
+	background-color: var(--orange);
+	color:#333;
+	border-radius:5px;
+	padding:8px;
+	font-size:12px;  
+	font-weight:bold;
+  
+  }

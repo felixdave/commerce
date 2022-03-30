@@ -164,16 +164,17 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
-
         if username == None:
+            # Username is blankmessage
             return render(request, "auctions/register.html", {
-            "message": "Username is none"
+            "message": "Please enter a username"
             })
-        else:
+        elif email == None:
+            # Email is blank message
             return render(request, "auctions/register.html", {
-            "message": f"{email}"
+            "message": f"Please enter an email"
             })
-        
+        # Username and email 
         # if username and email != None: 
         #     if authenticate(request, username=username):
         #         return render(request, "auctions/register.html", {
@@ -181,12 +182,12 @@ def register(request):
         #         })
         #     else:
         #         return render(request, "auctions/register.html", {
-        #             "message": f'username,{username}' 
+        #             "message": f'User {username} already exists' 
         #         })
         # else:
-        #    return render(request, "auctions/register.html", {
-        #         "message": f'One of these is null' 
-        #     })
+        #     return render(request, "auctions/register.html", {
+        #             "message": f'Please the following credentials' 
+        #         })
 
         # Ensure password matches confirmation
         password = request.POST["password"]
@@ -202,10 +203,11 @@ def register(request):
             user.save()
         except IntegrityError:
             return render(request, "auctions/register.html", {
-                "message": "Username already taken."
+                "message": "Username isalready taken"
             })
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
+    # Else if request is not POST
     else:
         return render(request, "auctions/register.html")
 

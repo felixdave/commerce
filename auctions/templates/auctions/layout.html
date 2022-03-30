@@ -75,8 +75,27 @@
     </div>
     <div id="content">
 
-      {% block body %} {% endblock %}
+          {% comment %} Upper Right Corner {% endcomment %}
+    {% if user.is_authenticated %}
+    <div id="logStatus">
+      <p>Hello, </p><strong>{{ user.username }}</strong>
+      <a href="{% url 'logout' %}" title=”Logout”><i class="bi bi-box-arrow-right"></i></a>
     </div>
+    {% else %}
+    <div id="logStatus">
+
+    <a href="{% url 'login' %}"><p>Log In</p></a> <p>
+    <a href="{% url 'register' %}"><p>Register</p></a>
+    </div>
+    {% endif %}
+
+    {% block body %} {% endblock %}
+
+    </div>
+
+
+
+
   </main>
 
   <script defer src="{% static 'auctions/js/script.js' %}"></script>
